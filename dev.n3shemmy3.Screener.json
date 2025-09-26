@@ -1,7 +1,7 @@
 {
   "id": "dev.n3shemmy3.Screener",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "master",
+  "runtime-version": "48",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "screener",
@@ -53,7 +53,8 @@
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
-          "tag": "v0.10.0"
+          "commit": "04ef0944db56ab01307a29aaa7303df6067cb3c0",
+          "tag": "v0.16.0"
         }
       ]
     }
