@@ -3,8 +3,8 @@
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.hg/store/**": true,
+    "**/.flatpak/**": true,
     ".flatpak/**": true,
     "_build/**": true
-  },
-  "cSpell.words": ["Nyirenda", "shemmy"]
+  }
 }
