@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Screener
+Exec=screener
+Icon=dev.n3shemmy3.Screener
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;Screen;Screen;Recorder;Screen Recorder;Screenshot;
+StartupNotify=true
+DBusActivatable=true
