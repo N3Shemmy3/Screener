@@ -3,4 +3,4 @@
 data/dev.n3shemmy3.Screener.desktop.in
 data/dev.n3shemmy3.Screener.metainfo.xml.in
 data/dev.n3shemmy3.Screener.gschema.xml
-src/window.ui
+src/window.blp
