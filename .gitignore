@@ -1,4 +1,5 @@
-.vscode/
+.vscode
+.idea
 target/
 build/
 _build/
