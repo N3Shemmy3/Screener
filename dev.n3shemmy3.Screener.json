@@ -42,9 +42,8 @@
       "buildsystem": "meson",
       "sources": [
         {
-          "type": "git",
-          "url": "https://github.com/N3Shemmy3/Screener.git",
-          "branch": "main"
+          "type": "dir",
+          "path": "./."
         }
       ],
       "config-opts": [
@@ -61,8 +60,7 @@
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
-          "commit": "04ef0944db56ab01307a29aaa7303df6067cb3c0",
-          "tag": "v0.16.0"
+          "tag": "v0.18.0"
         }
       ]
     }
