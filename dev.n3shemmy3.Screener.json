@@ -2,9 +2,10 @@
   "id": "dev.n3shemmy3.Screener",
   "runtime": "org.gnome.Platform",
   "runtime-version": "49",
-  "ccache": true,
   "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.rust-stable"
+  ],
   "command": "screener",
   "finish-args": [
     "--share=network",
@@ -15,7 +16,9 @@
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
-    "build-args": ["--share=network"],
+    "build-args": [
+      "--share=network"
+    ],
     "env": {
       "RUST_BACKTRACE": "1",
       "RUST_LOG": "screener=debug"
@@ -44,12 +47,16 @@
           "branch": "main"
         }
       ],
-      "config-opts": ["--libdir=lib"]
+      "config-opts": [
+        "--libdir=lib"
+      ]
     },
     {
       "name": "blueprint-compiler",
       "buildsystem": "meson",
-      "cleanup": ["*"],
+      "cleanup": [
+        "*"
+      ],
       "sources": [
         {
           "type": "git",
