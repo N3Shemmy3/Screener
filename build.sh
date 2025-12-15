@@ -1,11 +1,15 @@
 #!/bin/bash
+set -e
 
-# 1. Kill the running instance (if any)
-flatpak kill dev.n3shemmy3.Screener > /dev/null 2>&1 || true
+BUILD_DIR="build"
+PREFIX="$HOME/.local"
+BINARY_NAME="screener"
 
-# 2. Build and Install
-# If this fails, the script exits immediately (exit 1)
-flatpak-builder --force-clean --user --install build-dir dev.n3shemmy3.Screener.json || exit 1
+if [ ! -d "$BUILD_DIR" ]; then
+    meson setup "$BUILD_DIR" --prefix="$PREFIX" --buildtype=debug
+fi
 
-# 3. Run the new version
-flatpak run dev.n3shemmy3.Screener
+meson compile -C "$BUILD_DIR"
+meson install -C "$BUILD_DIR"
+
+"$PREFIX/bin/$BINARY_NAME"
