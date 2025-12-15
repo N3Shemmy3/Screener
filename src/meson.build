@@ -41,8 +41,7 @@ run_command(
 
 cargo_bin  = find_program('cargo')
 cargo_opt  = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
-cargo_opt += [ '--target-dir', meson.project_build_root()  / 'src' ]
-cargo_env  = [ 'CARGO_HOME=' + meson.project_build_root()  / 'cargo-home' ]
+cargo_opt += [ '--target-dir', meson.project_source_root() / 'target' ]
 
 if get_option('buildtype') == 'release'
   cargo_opt += [ '--release' ]
@@ -50,6 +49,9 @@ if get_option('buildtype') == 'release'
 else
   rust_target = 'debug'
 endif
+
+# Define where Cargo will output the binary
+binary_source = meson.project_source_root() / 'target' / rust_target / meson.project_name()
 
 cargo_build = custom_target(
   'cargo-build',
@@ -60,8 +62,13 @@ cargo_build = custom_target(
   install: true,
   install_dir: get_option('bindir'),
   command: [
-    'env', cargo_env,
-    cargo_bin, 'build',
-    cargo_opt, '&&', 'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
+    'sh', '-c',
+    'target=$1; bin=$2; src=$3; shift 3; "$bin" build "$@" && cp "$src" "$target"',
+
+    'script_wrapper', # $0 (ignored)
+    '@OUTPUT@',       # $1 (The destination inside meson build dir)
+    cargo_bin,        # $2 (The cargo executable)
+    binary_source,    # $3 (The compiled binary in target/debug/)
+    cargo_opt         # $4 (The flags for cargo)
   ]
 )
