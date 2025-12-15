@@ -9,6 +9,13 @@ template $ScreenerWindow: Adw.ApplicationWindow {
     content: Adw.ToolbarView {
         [top]
         Adw.HeaderBar {
+            [start]
+            Adw.SplitButton {
+                label: _("Open");
+                tooltip-text: _("Recently opened files");
+                menu-model: recents_menu;
+            }
+
             [end]
             MenuButton {
                 primary: true;
@@ -57,9 +64,37 @@ template $ScreenerWindow: Adw.ApplicationWindow {
                 orientation: vertical;
                 halign: center;
                 valign: center;
+
+                Button {
+                    label: _("Start new recording");
+
+                    styles [
+                        "suggested-action",
+                        "pill",
+                        "cursor-pointer",
+                    ]
+                }
             }
         };
     };
+}
+
+menu recents_menu {
+    section {
+        label: _("Recently open recordings");
+    }
+
+    item {
+        label: _("Recent Item");
+    }
+
+    item {
+        label: _("Recent Item");
+    }
+
+    item {
+        label: _("Recent Item");
+    }
 }
 
 menu primary_menu {

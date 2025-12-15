@@ -24,11 +24,12 @@ mod window;
 
 use self::application::ScreenerApplication;
 use self::window::ScreenerWindow;
+use gtk::gdk::Display;
 
 use config::{GETTEXT_PACKAGE, LOCALEDIR, PKGDATADIR};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
-use gtk::{gio, glib};
 use gtk::prelude::*;
+use gtk::{gio, glib};
 
 fn main() -> glib::ExitCode {
     // Set up gettext translations
@@ -46,10 +47,21 @@ fn main() -> glib::ExitCode {
     // application windows, integration with the window manager/compositor, and
     // desktop features such as file opening and single-instance applications.
     let app = ScreenerApplication::new("dev.n3shemmy3.Screener", &gio::ApplicationFlags::empty());
+    app.connect_startup(|_| load_styles());
 
     // Run the application. This function will block until the application
-    // exits. Upon return, we have our exit code to return to the shell. (This
-    // is the code you see when you do `echo $?` after running a command in a
+    // exits. Upon return, we have our exit code to return to the shell.
+    // This is the code you see when you do `echo $?` after running a command in a
     // terminal.
     app.run()
+}
+fn load_styles() {
+    let provider = gtk::CssProvider::new();
+    provider.load_from_string(include_str!("ui/main.css"));
+
+    gtk::style_context_add_provider_for_display(
+        &Display::default().expect("could not connect to a display"),
+        &provider,
+        gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+    );
 }
