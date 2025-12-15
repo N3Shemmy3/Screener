@@ -18,9 +18,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-use gtk::prelude::*;
+use crate::application::ScreenerApplication;
 use adw::subclass::prelude::*;
-use gtk::{gio, glib};
+use gtk::prelude::*;
+use gtk::{
+    gio, glib, Accessible, ConstraintTarget, Grid, Native, Root, ShortcutManager, Widget, Window,
+};
 
 mod imp {
     use super::*;
@@ -57,7 +60,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct ScreenerWindow(ObjectSubclass<imp::ScreenerWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,        @implements gio::ActionGroup, gio::ActionMap;
+    @extends Widget, adw::ApplicationWindow, ScreenerApplication,
+    @implements gio::ActionGroup, gio::ActionMap, Accessible, gtk::Buildable, ConstraintTarget, Native, Root, ShortcutManager, gtk::ApplicationWindow, Grid, Window;
 }
 
 impl ScreenerWindow {

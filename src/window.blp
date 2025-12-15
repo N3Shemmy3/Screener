@@ -18,12 +18,46 @@ template $ScreenerWindow: Adw.ApplicationWindow {
             }
         }
 
-        content: Label label {
-            label: _("Hello, World!");
+        content: Box content {
+            orientation: vertical;
+            halign: center;
+            valign: center;
+            spacing: 16;
 
-            styles [
-                "title-1",
-            ]
+            Box {
+                orientation: vertical;
+                halign: center;
+                valign: center;
+            }
+
+            Box {
+                orientation: vertical;
+                halign: center;
+                valign: center;
+                spacing: 8;
+
+                Label label {
+                    label: _("No Recording Opened");
+
+                    styles [
+                        "title-1",
+                    ]
+                }
+
+                Label {
+                    label: _("Open a recording or create a new one.");
+
+                    styles [
+                        "body-1",
+                    ]
+                }
+            }
+
+            Box {
+                orientation: vertical;
+                halign: center;
+                valign: center;
+            }
         };
     };
 }
