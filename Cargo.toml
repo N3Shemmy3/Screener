@@ -4,8 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gettext-rs = { version = "0.7", features = ["gettext-system"] }
-gtk = { version = "0.10.3", package = "gtk4", features = ["gnome_47"] }
+gettext-rs = { version = "0.7.7", features = ["gettext-system"] }
+gtk = { version = "0.10.3", package = "gtk4", features = ["gnome_49"] }
+cairo-rs = "0.21.5"
 
 [dependencies.adw]
 package = "libadwaita"
