@@ -1,16 +1,14 @@
-/* Make the window container transparent */
 window.panel {
     background-color: transparent;
     box-shadow: none;
     border: none;
 }
 
-/* Ensure the button inside looks good */
 window.panel button {
     min-width: 48px;
     min-height: 48px;
     padding: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Nice drop shadow */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 panel-container {
@@ -20,5 +18,5 @@ panel-container {
     padding: 8px 12px;
     padding-inline: 12px;
     padding-block: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Nice drop shadow */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
