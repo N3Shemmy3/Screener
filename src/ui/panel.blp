@@ -1,0 +1,63 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PanelWidget: Gtk.Window {
+    decorated: false;
+    resizable: false;
+    default-width: 60;
+    default-height: 60;
+
+    css-classes: [
+        "panel-window",
+    ];
+
+    WindowHandle {
+        Adw.HeaderBar container {
+            show-title: false;
+            show-back-button: false;
+            show-start-title-buttons: false;
+            show-end-title-buttons: false;
+            halign: center;
+            valign: center;
+
+            styles [
+                "panel-container",
+            ]
+
+            [start]
+            Adw.ButtonContent {
+                icon-name: "list-drag-handle-symbolic";
+
+                styles [
+                    "circular",
+                    "raised",
+                ]
+            }
+
+            Button my_button {
+                icon-name: "media-record-symbolic"; // Or any icon
+                // Make the button round and big
+                css-classes: [
+                    "circular",
+                    "suggested-action",
+                ];
+
+                // Make it fill the window
+                width-request: 50;
+                height-request: 50;
+                halign: center;
+                valign: center;
+            }
+
+            [end]
+            Adw.ButtonContent {
+                icon-name: "window-close-symbolic";
+
+                styles [
+                    "circular",
+                    "raised",
+                ]
+            }
+        }
+    }
+}
