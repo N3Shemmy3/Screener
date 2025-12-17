@@ -3,11 +3,11 @@ using Adw 1;
 
 template $ScreenerWindow: Adw.ApplicationWindow {
     title: _("Screener");
+    decorated: true;
     default-width: 800;
     default-height: 600;
 
     content: Adw.ToolbarView {
-        [top]
         Adw.HeaderBar {
             [start]
             Adw.SplitButton {
@@ -25,54 +25,50 @@ template $ScreenerWindow: Adw.ApplicationWindow {
             }
         }
 
-        content: Box content {
-            orientation: vertical;
-            halign: center;
-            valign: center;
-            spacing: 16;
-
-            Box {
+        content: WindowHandle {
+            Box content {
                 orientation: vertical;
                 halign: center;
                 valign: center;
-            }
+                spacing: 16;
 
-            Box {
-                orientation: vertical;
-                halign: center;
-                valign: center;
-                spacing: 8;
+                Box {
+                    orientation: vertical;
+                    halign: center;
+                    valign: center;
+                    spacing: 8;
 
-                Label label {
-                    label: _("No Recording Opened");
+                    Label label {
+                        label: _("No Recording Opened");
 
-                    styles [
-                        "title-1",
-                    ]
+                        styles [
+                            "title-1",
+                        ]
+                    }
+
+                    Label {
+                        label: _("Open a recording or create a new one.");
+
+                        styles [
+                            "body-1",
+                        ]
+                    }
                 }
 
-                Label {
-                    label: _("Open a recording or create a new one.");
+                Box {
+                    orientation: vertical;
+                    halign: center;
+                    valign: center;
 
-                    styles [
-                        "body-1",
-                    ]
-                }
-            }
+                    Button new_recording_button {
+                        label: _("Start new recording");
 
-            Box {
-                orientation: vertical;
-                halign: center;
-                valign: center;
-
-                Button {
-                    label: _("Start new recording");
-
-                    styles [
-                        "suggested-action",
-                        "pill",
-                        "cursor-pointer",
-                    ]
+                        styles [
+                            "suggested-action",
+                            "pill",
+                            "cursor-pointer",
+                        ]
+                    }
                 }
             }
         };

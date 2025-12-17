@@ -17,8 +17,9 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
 use crate::application::ScreenerApplication;
+use crate::logic::panel::PanelWidgetWindow;
+use adw::glib::clone;
 use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{
@@ -29,11 +30,11 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/n3shemmy3/Screener/window.ui")]
+    #[template(resource = "/dev/n3shemmy3/Screener/ui/window.ui")]
     pub struct ScreenerWindow {
         // Template widgets
         #[template_child]
-        pub label: TemplateChild<gtk::Label>,
+        pub new_recording_button: TemplateChild<gtk::Button>,
     }
 
     #[glib::object_subclass]
@@ -66,8 +67,35 @@ glib::wrapper! {
 
 impl ScreenerWindow {
     pub fn new<P: IsA<gtk::Application>>(application: &P) -> Self {
-        glib::Object::builder()
+        let window = glib::Object::builder::<ScreenerWindow>()
             .property("application", application)
-            .build()
+            .build();
+
+        window.connect_signals();
+
+        window
+    }
+    fn show_panel(&self) {
+        // We need to get the 'app' to pass to the new window
+        if let Some(app) = self
+            .application()
+            .and_then(|a| a.downcast::<adw::Application>().ok())
+        {
+            // Create the floating panel
+            let panel = PanelWidgetWindow::new(&app);
+            //panel.set_keep_above(true);
+            panel.present();
+
+            //Close the main window so only the widget remains
+            self.close();
+        }
+    }
+
+    fn connect_signals(&self) {
+        self.imp().new_recording_button.connect_clicked(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |_| window.show_panel()
+        ));
     }
 }
