@@ -19,6 +19,6 @@ panel-container {
     border-radius: 16px;
     padding: 8px 12px;
     padding-inline: 12px;
-    padding-loccccccccccccccccccccccccccccc
+    padding-block: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Nice drop shadow */
 }

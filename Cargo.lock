@@ -667,7 +667,6 @@ dependencies = [
 name = "screener"
 version = "0.1.0"
 dependencies = [
- "cairo-rs",
  "gettext-rs",
  "gtk4",
  "libadwaita",
