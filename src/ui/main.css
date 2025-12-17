@@ -1,3 +1,24 @@
-button:hover, .cursor-pointer:hover {
-    cursor: pointer;
+/* Make the window container transparent */
+window.panel {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* Ensure the button inside looks good */
+window.panel button {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Nice drop shadow */
+}
+
+panel-container {
+    background-color: var(--headerbar-bg-color);
+    color: var(--headerbar-fg-color);
+    border-radius: 16px;
+    padding: 8px 12px;
+    padding-inline: 12px;
+    padding-loccccccccccccccccccccccccccccc
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Nice drop shadow */
 }

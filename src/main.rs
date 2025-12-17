@@ -20,6 +20,7 @@
 
 mod application;
 mod config;
+mod logic;
 mod window;
 
 use self::application::ScreenerApplication;
